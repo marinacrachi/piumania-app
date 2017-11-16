@@ -26,7 +26,7 @@ export class PerformanceProvider {
   }
 
   getPerformanceByTournament(tournament){
-    return this.api.get('performances?tournament=' + tournament) 
+    return this.api.get('performances?tournament=' + tournament+'&sort=player') 
     .map(res => res.json())
     .catch(error => Observable.throw(error))
   }
