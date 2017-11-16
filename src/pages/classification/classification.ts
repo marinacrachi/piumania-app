@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { TournamentsProvider } from '../../providers/tournaments';
 import { PerformanceProvider } from '../../providers/performance';
+import { LocalNotifications } from '@ionic-native/local-notifications';
 
 /**
  * Generated class for the ClassificationPage page.
@@ -25,7 +26,8 @@ export class ClassificationPage {
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
               public tournamentProvider: TournamentsProvider,
-              public performanceProvider: PerformanceProvider) {
+              public performanceProvider: PerformanceProvider,
+              private localNotifications: LocalNotifications) {
 
     this.tournament = {stages: []}
     this.tournamentId = navParams.get("tournamentId")    
@@ -35,10 +37,12 @@ export class ClassificationPage {
   ionViewDidLoad() {
     this.tournamentProvider.getTournamentById(this.tournamentId).subscribe((resp)=>{
       this.tournament = resp;
+      this.stage=resp.stages[0].name;
     })
 
     this.performanceProvider.getPerformanceByTournament(this.tournamentId).subscribe((resp)=>{
       this.performances = resp;
+      
       console.log(this.performances.length)
     })
 
@@ -47,15 +51,25 @@ export class ClassificationPage {
   selectStage(event,stage){
     this.stage = stage;
   }
-
+  scheduleNotification(){
+    console.log("teste"); 
+    this.localNotifications.schedule({
+      id: 1,
+      text: 'Fique atento para não perder sua vez de jogar! :)',
+      sound: 'file://sound.mp3',
+      led:"FF0066",
+      at: new Date(new Date().getTime() + 600000),
+      data: { secret: "key" }
+    });
+  }
+  
   stageButton(button, stage){
-    console.log("stage button: " + button)
-    console.log("stage: " + stage)
+    
     if (button == stage) {
-      console.log(true)
+    
       return true;
     } else {
-      console.log(false)
+    
       return false;
     }
   }

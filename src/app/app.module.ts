@@ -17,7 +17,7 @@ import { Api } from '../providers/api';
 import { AuthProvider } from '../providers/auth/auth';
 import { PerformanceProvider } from '../providers/performance';
 import { PerformancePipe } from '../pipes/performance/performance';
-
+import { LocalNotifications } from '@ionic-native/local-notifications';
 
 @NgModule({
   declarations: [ 
@@ -26,7 +26,8 @@ import { PerformancePipe } from '../pipes/performance/performance';
     ListPage,
     LoginPage,
     ClassificationPage,
-    PerformancePipe
+    PerformancePipe,
+    
   ],
   imports: [
     BrowserModule,
@@ -50,6 +51,7 @@ import { PerformancePipe } from '../pipes/performance/performance';
     Api,
     AuthProvider,
     PerformanceProvider,
+    LocalNotifications
   ]
 })
 export class AppModule {}

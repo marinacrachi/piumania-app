@@ -23,12 +23,15 @@
   </div>
 
   <div>
-    <ion-list>
+    <ion-list radio-group [(ngModel)]="selectedPlayer" (ionChange)="scheduleNotification()" >
       <ion-item *ngFor="let performance of (performances|performance:stage)">
-        <div *ngIf="stageButton(stage, performance.modifier.stage)">
+        <ion-label *ngIf="stageButton(stage, performance.modifier.stage)">
           <h1>{{performance.player.name}}</h1>
           <h2>{{performance.song}} - {{performance.score}}</h2>
-        </div>
+
+
+        </ion-label>
+        <ion-radio [value]="performance" ></ion-radio>
       </ion-item>
     </ion-list>
   </div>
