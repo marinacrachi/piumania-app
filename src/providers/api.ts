@@ -6,10 +6,13 @@ import 'rxjs/add/operator/catch';
 /**
  * Api is a generic REST Api handler. Set your API url first.
  */
+
+export const URL_API = 'http://138.197.73.248:9000'
+
 @Injectable()
 export class Api {
-  url: string = 'http://138.197.73.248:9000';
-   
+  url: string = URL_API;
+
   constructor(public http: Http) {
   }
 

@@ -24,3 +24,9 @@ $ ionic cordova run ios
 
 Substitute ios for android if not on a Mac.
 
+##libs
+#Socket.io for Angular/IONIC 
+<a href="https://www.npmjs.com/package/ng-socket-io">https://www.npmjs.com/package/ng-socket-io</a>
+```bash
+npm install ng-socket-io --save
+```
