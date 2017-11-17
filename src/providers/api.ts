@@ -8,7 +8,7 @@ import 'rxjs/add/operator/catch';
  */
 @Injectable()
 export class Api {
-  url: string = 'http://192.168.15.16:9000';
+  url: string = 'http://138.197.73.248:9000';
    
   constructor(public http: Http) {
   }
